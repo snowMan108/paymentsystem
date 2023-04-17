@@ -7,10 +7,12 @@ import PaymentStatusChecker from "./components/PaymentStatusChecker.vue";
 </script>
 
 <template>
-  <!-- <Dashboard />
+  <!-- 
+  <Dashboard />
   <InvoiceGenerator />
   <InvoiceList /> 
-  <PaymentConfirmation /> -->
+  <PaymentConfirmation />
+  -->
   <PaymentStatusChecker />
 </template>
 

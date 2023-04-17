@@ -1,43 +1,64 @@
 <template>
-  <div>
-    <h1>Invoice Dashboard</h1>
-    <div class="chart-container">
-      <!--  1. Dashboard: The dashboard will allow users to see a summary of invoices generated and their payment status. It should display key information such as the total amount of paid and unpaid invoices, along with graphs or charts for an easy overview. -->
+  <div class="p-4 md:p-8">
+    <!-- Add padding of 4 on small screens and 8 on medium and larger screens -->
+    <h1 class="text-2xl md:text-4xl font-bold mb-4">Invoice Dashboard</h1>
+    <!-- Increase font size on larger screens and add margin bottom of 4 -->
+    <div class="chart-container bg-white shadow-md rounded-lg p-4 mb-4 md:mb-8">
+      <!-- Add background color, shadow, rounded corners, padding and margin bottom -->
+      <p class="text-center">Insert chart here</p>
+      <!-- Center the text -->
     </div>
-    <div class="summary-container">
-      <div class="total-container">
+    <div class="summary-container grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <!-- Use grid to display the summary side by side on medium and larger screens -->
+      <div class="total-container bg-white shadow-md rounded-lg p-4">
         <div class="paid-container">
-          <h3>Paid Invoices</h3>
-          <p>{{ paidCount }} Invoices</p>
-          <p>Total Amount: {{ paidTotal }}</p>
-        </div>
-        <div class="unpaid-container">
-          <h3>Unpaid Invoices</h3>
-          <p>{{ unpaidCount }} Invoices</p>
-          <p>Total Amount: {{ unpaidTotal }}</p>
+          <h3 class="text-xl font-bold mb-2">Paid Invoices</h3>
+          <!-- Increase font size and add margin bottom -->
+          <p class="mb-1">{{ paidCount }} Invoices</p>
+          <p class="font-bold text-lg mb-2">Total Amount: {{ paidTotal }}</p>
+          <!-- Increase font size and make the amount bold -->
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Invoice Number</th>
-            <th>Client Name</th>
-            <th>Amount</th>
-            <th>Payment Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="invoice in invoices" :key="invoice.id">
-            <td>{{ invoice.invoice_number }}</td>
-            <td>{{ invoice.client_name }}</td>
-            <td>{{ invoice.amount }}</td>
-            <td>{{ invoice.payment_status }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="total-container bg-white shadow-md rounded-lg p-4">
+        <div class="unpaid-container">
+          <h3 class="text-xl font-bold mb-2">Unpaid Invoices</h3>
+          <p class="mb-1">{{ unpaidCount }} Invoices</p>
+          <p class="font-bold text-lg mb-2">Total Amount: {{ unpaidTotal }}</p>
+        </div>
+      </div>
+      <!-- Use the same style for the two containers -->
     </div>
+    <table class="w-full table-auto">
+      <!-- Use tailwind's table classes to make the table responsive -->
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Invoice Number</th>
+          <th class="px-4 py-2">Client Name</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="invoice in invoices" :key="invoice.id">
+          <td class="border px-4 py-2">{{ invoice.invoice_number }}</td>
+          <td class="border px-4 py-2">{{ invoice.client_name }}</td>
+          <td class="border px-4 py-2">{{ invoice.amount }}</td>
+          <td class="border px-4 py-2">{{ invoice.payment_status }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
+
+<!-- You can also add custom tailwind classes in the style section -->
+<!-- By using tailwind css classes, you can easily create a beautiful and responsive UI without having to write custom CSS. You can adjust the classes based on your design requirements. --->
+<!-- Define a custom height for the chart container -->
+<style>
+.chart-container {
+  height: 300px;
+}
+</style>
+
 <script>
 //In this example, we use a table to display the summary of generated invoices and their payment status. Additionally, we added a summary section that displays the total amount of paid and unpaid invoices, along with the counts of paid and unpaid invoices. The data for invoices is hardcoded in the component, but in a real-world scenario, it should be fetched from a backend API. The chart or graph component can be added by replacing the  div  with the  chart-container  class.
 
