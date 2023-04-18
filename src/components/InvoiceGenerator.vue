@@ -59,19 +59,7 @@
     </form>
   </div>
 </template>
-<!--
-  In the above code, CSS classes such as "max-w-xl", "mx-auto", "text-2xl", "font-bold", "mb-4", "bg-gray-100", "rounded-lg", "p-4", "mt-1", "block", "w-full", "rounded-md", "border-gray-300", "shadow-sm", "focus:border-indigo-500", "focus:ring", "focus:ring-indigo-200", "focus:ring-opacity-50", "text-center", "inline-block", "bg-indigo-500", "hover:bg-indigo-700", "text-white", "font-bold", "py-2", "px-4" and "rounded" are added to various HTML elements to make the UI responsive, visually appealing and user-friendly.
-  --->
 <script>
-/*In this example, we created a form with input fields for the client name, invoice amount, due date, and other details. 
-We added v-model directives to bind the values of the form fields to our component's data properties. We also added a submit button to generate the invoice.
-
-When the user submits the form, the submitInvoice method is called.
-Here, you can add your logic to save the new invoice to the database or perform any other actions required.
-In this example, we simply log the new invoice object to the console.
-
-After saving your invoice successfully, reset the form fields to their initial values so the user can generate another invoice.
-*/
 
 export default {
   name: "InvoiceGenerator",
@@ -85,14 +73,12 @@ export default {
   },
   methods: {
     submitInvoice() {
-      // Here you can add your logic to save the new invoice to the database or perform any other actions required
       console.log("New Invoice:", {
         clientName: this.clientName,
         invoiceAmount: this.invoiceAmount,
         dueDate: this.dueDate,
         otherDetails: this.otherDetails,
       });
-      // After saving your invoice successfully, reset the form fields to their initial values
       this.clientName = "";
       this.invoiceAmount = 0;
       this.dueDate = "";
