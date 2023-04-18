@@ -3,11 +3,12 @@
     <!-- Add padding of 4 on small screens and 8 on medium and larger screens -->
     <h1 class="text-2xl md:text-4xl font-bold mb-4">Invoice Dashboard</h1>
     <!-- Increase font size on larger screens and add margin bottom of 4 -->
-    <div class="chart-container bg-white shadow-md rounded-lg p-4 mb-4 md:mb-8">
-      <!-- Add background color, shadow, rounded corners, padding and margin bottom -->
-      <p class="text-center">Insert chart here</p>
-      <!-- Center the text -->
+    <div
+      class="chart-container bg-white shadow-md rounded-lg p-4 relative mb-4 md:mb-8"
+    >
+      <canvas ref="chart" class="chart-canvas"></canvas>
     </div>
+
     <div class="summary-container grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
       <!-- Use grid to display the summary side by side on medium and larger screens -->
       <div class="total-container bg-white shadow-md rounded-lg p-4">
@@ -50,19 +51,26 @@
   </div>
 </template>
 
-<!-- You can also add custom tailwind classes in the style section -->
-<!-- By using tailwind css classes, you can easily create a beautiful and responsive UI without having to write custom CSS. You can adjust the classes based on your design requirements. --->
 <!-- Define a custom height for the chart container -->
 <style>
 .chart-container {
-  height: 300px;
+  height: 400px;
+}
+
+.chart-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 </style>
 
 <script>
 //In this example, we use a table to display the summary of generated invoices and their payment status. Additionally, we added a summary section that displays the total amount of paid and unpaid invoices, along with the counts of paid and unpaid invoices. The data for invoices is hardcoded in the component, but in a real-world scenario, it should be fetched from a backend API. The chart or graph component can be added by replacing the  div  with the  chart-container  class.
-
+import Chart from "chart.js/auto";
 export default {
+  name: "Dashboard",
   data() {
     return {
       invoices: [
@@ -90,6 +98,9 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.renderChart();
+  },
   computed: {
     // Calculate the total amount of paid invoices
     paidTotal() {
@@ -114,6 +125,43 @@ export default {
       return this.invoices.filter(
         (invoice) => invoice.payment_status === "Unpaid"
       ).length;
+    },
+  },
+  methods: {
+    renderChart() {
+      const amounts = this.invoices.map((invoice) => invoice.amount);
+      const chartData = {
+        labels: ["Invoice 1", "Invoice 2", "Invoice 3"],
+        datasets: [
+          {
+            label: "Invoice Amounts",
+            data: amounts,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+      const chartOptions = {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      };
+      const chart = new Chart(this.$refs.chart, {
+        type: "bar",
+        data: chartData,
+        options: chartOptions,
+      });
     },
   },
 };

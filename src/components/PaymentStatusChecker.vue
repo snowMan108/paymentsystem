@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-md mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-6">Payment Status Checker</h1>
+    <h1 class="text-3xl font-bold text-center mb-6 mt-10">
+      Payment Status Checker
+    </h1>
     <form
       class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       @submit.prevent="checkPayment"
@@ -50,6 +52,7 @@ In this example, we created a form with an input field for the transaction link.
  After checking the payment status, we update the  paymentStatus  data property with either  true  (paid) or  false  (unpaid). We also conditionally render a  <h2>  element to display the payment status to the client. If  paymentStatus  is  null , the payment status is not displayed. Once the client submits the form again, the payment status will be updated based on the new transaction link.
 */
 export default {
+  name: "PaymentStatusChecker",
   data() {
     return {
       txLink: "",

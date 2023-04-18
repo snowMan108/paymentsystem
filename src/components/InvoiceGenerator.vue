@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-xl mx-auto">
-    <h1 class="text-2xl text-center font-bold mb-4">Invoice Generator</h1>
+    <h1 class="text-2xl text-center font-bold mt-10 mb-4">Invoice Generator</h1>
     <form @submit.prevent="submitInvoice" class="bg-gray-100 rounded-lg p-4">
       <div class="mb-4">
         <label for="clientName" class="block font-medium text-gray-700"
@@ -11,7 +11,7 @@
           id="clientName"
           v-model="clientName"
           required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-2 px-3"
         />
       </div>
       <div class="mb-4">
@@ -23,7 +23,7 @@
           id="invoiceAmount"
           v-model="invoiceAmount"
           required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-2 px-3"
         />
       </div>
       <div class="mb-4">
@@ -35,7 +35,7 @@
           id="dueDate"
           v-model="dueDate"
           required
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-2 px-3"
         />
       </div>
       <div class="mb-4">
@@ -45,7 +45,7 @@
         <textarea
           id="otherDetails"
           v-model="otherDetails"
-          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-2 px-3"
         ></textarea>
       </div>
       <div class="text-center">
@@ -74,6 +74,7 @@ After saving your invoice successfully, reset the form fields to their initial v
 */
 
 export default {
+  name: "InvoiceGenerator",
   data() {
     return {
       clientName: "",
@@ -100,3 +101,20 @@ export default {
   },
 };
 </script>
+<style>
+input {
+  height: 40px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+textarea {
+  padding: 10px !important;
+}
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  border: solid 1px rgb(59 130 246 / 0.5) !important;
+}
+</style>

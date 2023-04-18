@@ -77,6 +77,7 @@ In this example, we created a form with input fields for the client name, invoic
  After confirming the payment successfully, reset the form fields to their initial values so the client can confirm another payment.
 */
 export default {
+  name: "PaymentConfirmation",
   data() {
     return {
       clientName: "",

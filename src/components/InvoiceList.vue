@@ -107,6 +107,7 @@ In this example, we created a table with columns for the invoice number, client 
 Of course, in a real application, you would get the invoices data from a server API or database instead of hardcoding them as we did here. You would also need to add functionality for checking if a client paid, avoiding double payments, and payments from the past, but this example should give you an idea of how to display your invoices list on the frontend using Vue.js.
 */
 export default {
+  name: "InvoiceList",
   data() {
     return {
       invoices: [
